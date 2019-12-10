@@ -4,20 +4,22 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var getElementsByClassName = function(className, e) {
+var getElementsByClassName = function(className) {
   // your code here
   var arr = [];
-  e = e || document.body;
 
-  if (e.className === className) {
-    arr.push(e);
-  }
+  var lookup = function (className, e) {
+    if (e.classList.contains(className)) {
+      arr.push(e);
+    }
 
-  for (let i = 0; i < e.children.length; i++) {
-    // calling getElementsByClassName on children
-    let result = getElementsByClassName(className, e.children[i]);
-    console.log(e.children[i].className, result);
-  }
+    for (let i = 0; i < e.children.length; i++) {
+      // calling lookup on children
+      lookup(className, e.children[i]);
+    }
+  };
+
+  lookup(className, document.body);
 
   // return array with elements
   return arr;
