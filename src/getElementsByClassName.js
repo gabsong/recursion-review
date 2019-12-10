@@ -4,11 +4,11 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var getElementsByClassName = function(className) {
+const getElementsByClassName = function(className) {
   // your code here
-  var arr = [];
+  const arr = [];
 
-  var lookup = function (className, e) {
+  const lookup = function(className, e) {
     if (e.classList.contains(className)) {
       arr.push(e);
     }

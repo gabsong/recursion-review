@@ -3,9 +3,9 @@
 
 // but you don't so you're going to write it from scratch:
 
-var stringifyJSON = function(obj) {
+const stringifyJSON = function(obj) {
   // your code goes here
-  var result = '';
+  let result = '';
   if (typeof obj === 'number') {
     result += obj + '';
   } else if (obj === null) {
@@ -30,8 +30,9 @@ var stringifyJSON = function(obj) {
   } else {
     result += '{';
     for (let key in obj) {
-      if (!(obj[key] === undefined || typeof obj[key] === 'function'))
+      if (!(obj[key] === undefined || typeof obj[key] === 'function')) {
         result += stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + ',';
+      }
     }
     if (result.length > 1) {
       result = result.substring(0, result.length - 1);
